@@ -6,7 +6,8 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const expressValidator = require('express-validator')
 require('dotenv').config();
-
+const {signup, signin, signout, requireSignin} = require('../controllers/auth');
+const {userSignupValidator} = require("../validator");
 // //import routes
 // const authRoutes= require('./routes/auth');
 // const userRoutes= require('./routes/user');
