@@ -54,7 +54,7 @@ exports.signin = (req,res) => {
 
 exports.signout = (req, res) => {
     res.clearCookie('t')
-    res.json({message:"登出成功"})
+    res.json({message:"success"})
 
 };
 
@@ -74,13 +74,3 @@ exports.isAuth = (req, res, next)=>{
         next();
 };
 
-exports.isAdmin = (req,res,next) => {
-    if(req.profile.role ===0){
-        return res.status(403).json({
-            error: "Admin resource! access denied!"
-
-        });
-
-    }
-    next();
-};
