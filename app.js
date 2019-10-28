@@ -6,14 +6,10 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const expressValidator = require('express-validator')
 require('dotenv').config();
-const {signup, signin, signout, requireSignin} = require('../controllers/auth');
-const {userSignupValidator} = require("../validator");
+const {signup, signin, signout, requireSignin} = require('./controllers/auth');
+const {userSignupValidator} = require("./validator");
 // //import routes
-// const authRoutes= require('./routes/auth');
-// const userRoutes= require('./routes/user');
-// const categoryRoutes = require("./routes/category");
-// const productRoutes = require("./routes/product");
-// const braintreeRoutes = require("./routes/braintree");
+const authRoutes= require('./routes/auth');
 
 // app
 const app = express();
@@ -30,16 +26,13 @@ mongoose.connect("mongodb+srv://admin-cheryl:Iphone8!@cluster0-zmvqc.mongodb.net
 //middlewares
 app.use(morgan('dev'));
 app.use(cookieParser());
-app.use(expressValidator());
+// app.use(expressValidator());
 app.use(cors());
 
 
 // //routes middleware
-// app.use('/api',authRoutes);
-// app.use('/api',userRoutes);
-// app.use('/api', categoryRoutes);
-// app.use('/api', productRoutes);
-// app.use('/api', braintreeRoutes);
+app.use('/api',authRoutes);
+
 
 const port = process.env.PORT || 8000
 
